@@ -18,14 +18,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll() // Rota pública
-                        .anyRequest().authenticated() // Outras rotas devem ser autenticadas
+                        .requestMatchers("/auth/**").permitAll()
+                        .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
-                        .jwt(withDefaults()) // Autenticação JWT para o resource server
+                        .jwt(withDefaults())
                 );
 
-        return http.build(); // Necessário no Spring Boot 3
+        return http.build();
     }
 
     @Bean
