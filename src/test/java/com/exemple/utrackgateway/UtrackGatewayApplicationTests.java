@@ -1,4 +1,4 @@
-package com.exemple.utrackbackend;
+package com.exemple.utrackgateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
