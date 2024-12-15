@@ -1,0 +1,32 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: wms-gateway-service
+
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: http://auth-service:8081
+          predicates:
+            - Path=/auth/**
+
+        - id: inventory-service
+          uri: http://inventory-service:8082
+          predicates:
+            - Path=/inventory/**
+
+        - id: order-service
+          uri: http://order-service:8083
+          predicates:
+            - Path=/order/**
+
+security:
+  jwt:
+    jwt-audience: wms
+    jwt-issuer: wms
+    jwt-base64-secret: wms-secret-local
+    jwt-validade-token-em-segundos: 3600
+    jwt-validade-refresh-em-token-segundos: 7200
